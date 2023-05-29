@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.blue,
-            brightness: Brightness.light,
+            brightness: Brightness.dark,
             //brighness compares the text color with text color
             //primary color is responsible for chnaging the default color
       ),
