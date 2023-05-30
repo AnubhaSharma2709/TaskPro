@@ -4,6 +4,8 @@ class ThemeServices {
 final _box = GetStorage();
 final _key = 'isDarkMode';
 
-bool _loadThemeFromeBox =>_box.read(_key)
+bool _loadThemeFromeBox() =>_box.read(_key)??false;
+
+
 
 }
