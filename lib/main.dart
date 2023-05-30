@@ -13,17 +13,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue,
-            brightness: Brightness.dark,
-            //brighness compares the text color with text color
-            //primary color is responsible for chnaging the default color
+        primaryColor: Colors.red,
+            brightness: Brightness.light,
       ),
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData(
+        primaryColor: Colors.red,
+        brightness: Brightness.light,
       ),
-      //Theme data tells how your app should look like
-      // Chnage the default settings.
-      //using theme data you can change how your app should
-      //look like
       home: HomePage(),
     );
   }
