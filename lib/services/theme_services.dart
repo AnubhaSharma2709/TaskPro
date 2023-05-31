@@ -12,5 +12,4 @@ void switchTheme(){
   Get.changeThemeMode(_loadThemeFromBox()?ThemeMode.light:ThemeMode.dark);
   _saveThemeToBox(!_loadThemeFromBox());
 }
-bdhdbhwvdbhv
 }
