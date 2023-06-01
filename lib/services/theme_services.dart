@@ -13,3 +13,4 @@ void switchTheme(){
   _saveThemeToBox(!_loadThemeFromBox());
 }
 }
+
