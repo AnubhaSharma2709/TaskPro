@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:task_pro/services/theme_services.dart';
 
@@ -25,19 +27,23 @@ class _HomePageState extends State<HomePage> {
 }
 
 _appBar(){
-  return AppBar(
-    leading: GestureDetector(
-      onTap: (){
-        ThemeServices().switchTheme();
-        print("tapped");
-      },
-      child: Icon(Icons.nightlight_round,
-      size: 20,),
-    ),
-    actions: [
-      Icon(Icons.person,
-      size: 20,),
-      SizedBox(width: 20,),
-    ],
+  return Container(
+    child: Row(
+    children: [
+        GestureDetector(
+          onTap: (){
+            ThemeServices().switchTheme();
+            print("tapped");
+          },
+          child: Icon(Icons.nightlight_round, size: 20,),
+        ),
+          CircleAvatar(
+            backgroundImage: AssetImage(
+                "lib/images/AnubhaSharma.png"
+            ),
+            radius: 25,
+          ),
+        ],
+    )
   );
 }

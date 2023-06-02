@@ -12,7 +12,8 @@ class Themes{
   static final light = ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
           brightness: Brightness.light,
-          primary: primaryClr,
+          primary: Colors.white,
+          background: Colors.white,
         ),
       );
   static final dark =  ThemeData(
