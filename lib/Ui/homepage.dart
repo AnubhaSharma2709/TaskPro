@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_pro/services/notification_services.dart';
 import 'package:task_pro/services/theme_services.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,14 +9,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var notifyHelper;
-
-  void initState(){
-    super.initState();
-  notifyHelper= NotifyHelper();
-  notifyHelper.requestIOSPermissions();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),
