@@ -12,7 +12,7 @@ class NotifyHelper {
     //tz.initializeTimeZones();
     // this is for latest iOS settings
     final DarwinInitializationSettings initializationSettingsIOS =
-     DarwinInitializationSettings(
+    DarwinInitializationSettings(
         requestSoundPermission: false,
         requestBadgePermission: false,
         requestAlertPermission: false,
@@ -20,18 +20,14 @@ class NotifyHelper {
     );
 
     final AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings("appicon");
+        AndroidInitializationSettings('appicon');
 
-    final InitializationSettings initializationSettings =
-    InitializationSettings(
+      final InitializationSettings initializationSettings =
+      InitializationSettings(
       iOS: initializationSettingsIOS,
-      android: initializationSettingsAndroid,
+      android:initializationSettingsAndroid,
     );
-    await flutterLocalNotificationsPlugin.initialize(
-        initializationSettings,
-        onSelectNotification: selectNotification,
-    );
-  }
+}
   void requestIOSPermissions() {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -42,20 +38,10 @@ class NotifyHelper {
       sound: true,
     );
   }
-    Future selectNotification(String payload) async {
-    if (payload != null) {
-      print('notification payload: $payload');
-    } else {
-      print("Notification Done");
-    }
-    Get.to(() => Container(color: Colors.white,));
+
+  Future onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload) async {
+    Get.dialog(Text("Welcome"));
+
   }
 }
-
-  Future onDidReceiveLocalNotification(int id, String? title, String? body,
-      String? payload) async {
-    Get.dialog(
-        const Text("Welcome to Flutter")
-    );
-  }
-
