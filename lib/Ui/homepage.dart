@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:task_pro/services/notification_services.dart';
 import 'package:task_pro/services/theme_services.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var notifyHelper;
+
+  void initState(){
+    super.initState();
+  notifyHelper= NotifyHelper();
+  notifyHelper.requestIOSPermissions();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),

@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
 
-class NotifyHelper{
+
+class NotifyHelper {
   FlutterLocalNotificationsPlugin
   flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin(); //
@@ -9,23 +12,50 @@ class NotifyHelper{
     //tz.initializeTimeZones();
     // this is for latest iOS settings
     final DarwinInitializationSettings initializationSettingsIOS =
-    DarwinInitializationSettings(
+     DarwinInitializationSettings(
         requestSoundPermission: false,
         requestBadgePermission: false,
         requestAlertPermission: false,
         onDidReceiveLocalNotification: onDidReceiveLocalNotification
     );
 
-    final Android InitializationSettings initializationSettingsAndroid =
-        Android InitializationSettings("appicon);
+    final AndroidInitializationSettings initializationSettingsAndroid =
+    AndroidInitializationSettings("appicon");
 
-      final InitializationSettings initializationSettings =
-      InitializationSettings(
+    final InitializationSettings initializationSettings =
+    InitializationSettings(
       iOS: initializationSettingsIOS,
-      android:initializationSettingsAndroid,
+      android: initializationSettingsAndroid,
     );
     await flutterLocalNotificationsPlugin.initialize(
         initializationSettings,
-        onSelectNotification: selectNotification);
-
+        onSelectNotification: selectNotification,
+    );
   }
+  void requestIOSPermissions() {
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+        IOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+  }
+    Future selectNotification(String payload) async {
+    if (payload != null) {
+      print('notification payload: $payload');
+    } else {
+      print("Notification Done");
+    }
+    Get.to(() => Container(color: Colors.white,));
+  }
+}
+
+  Future onDidReceiveLocalNotification(int id, String? title, String? body,
+      String? payload) async {
+    Get.dialog(
+        const Text("Welcome to Flutter")
+    );
+  }
+
